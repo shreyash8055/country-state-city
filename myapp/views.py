@@ -14,18 +14,30 @@ def load_json_file(filename):
 
 def get_all_countries(request):
     countries = load_json_file('countries.json')
+<<<<<<< HEAD
     
     # Get the `name` query param
     name = request.GET.get('name')
     
     if name:
         # Case-insensitive filtering
+=======
+    name = request.GET.get('name')
+    
+    if name:
+>>>>>>> 094e708 (removing template and fuction for location)
         countries = [c for c in countries if c.get('name', '').lower() == name.lower()]
     
     return JsonResponse({'countries': countries})
 
+# def get_states(request):
+#     country_id = request.GET.get('country_id')
+#     states = load_json_file('states.json')
+#     filtered = [s for s in states if str(s['country_id']) == str(country_id)]
+#     return JsonResponse({'states': filtered})
 def get_states(request):
     country_name = request.GET.get('country')
+<<<<<<< HEAD
 
     if not country_name:
         return JsonResponse({'error': 'Country name is required as query param (?country=India)'}, status=400)
@@ -34,7 +46,16 @@ def get_states(request):
     states = [state for state in states_data if state.get('country_name') == country_name]
 
     return JsonResponse({'states': states})
+=======
+>>>>>>> 094e708 (removing template and fuction for location)
 
+    if not country_name:
+        return JsonResponse({'error': 'Country name is required as query param (?country=India)'}, status=400)
+
+    states_data = load_json_file('states.json')
+    states = [state for state in states_data if state.get('country_name') == country_name]
+
+    return JsonResponse({'states': states})
 def get_cities(request):
     country_name = request.GET.get('country')
     state_name = request.GET.get('state')
