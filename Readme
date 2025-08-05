@@ -1,0 +1,4 @@
+http://127.0.0.1:8000/api/countries/?name=India   (country info by name)
+http://127.0.0.1:8000/api/countries/              (get all countries)
+http://127.0.0.1:8000/api/states/?country=India    (states by country)
+http://127.0.0.1:8000/api/cities/?country=India&state=Maharashtra (get cities using country and state)
